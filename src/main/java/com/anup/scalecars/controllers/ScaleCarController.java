@@ -14,34 +14,34 @@ import com.anup.scalecars.services.ScaleModelService;
 
 
 @RestController
-@RequestMapping(value="/scaleworldapi")
+@RequestMapping(value="/scaleworldapi/v1")
 public class ScaleCarController {
 	
 	@Autowired
 	private ScaleModelService scaleService;
 	
 	
-	@RequestMapping(value="/modelcars", method=RequestMethod.GET)
+	@RequestMapping(value="/modelcar", method=RequestMethod.GET)
     public List<Scalemaster> getAllScalecars(){
         return scaleService.listAllCars();
     }
 	
-	@RequestMapping(value="/modelcars", method=RequestMethod.POST)
+	@RequestMapping(value="/modelcar", method=RequestMethod.POST)
     public void addNewScalecar(@RequestBody Scalemaster scalemaster){
         scaleService.addNewScalecar(scalemaster);
     }
 	
-	@RequestMapping(value ="/modelcars/{id}", method=RequestMethod.GET)
+	@RequestMapping(value ="/modelcar/{id}", method=RequestMethod.GET)
 	public Scalemaster getScalecar(@PathVariable Long id){
 		return scaleService.getScalecar(id);
 	}
 	
-	@RequestMapping(value ="/modelcars/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value ="/modelcar/{id}", method=RequestMethod.PUT)
 	public void updateScalecar(@RequestBody Scalemaster scalemaster, @PathVariable Long id) { 
 		scaleService.updateScalecar(scalemaster, id);
 	}
 	
-	@RequestMapping(value ="/modelcars/{id}", method=RequestMethod.DELETE)
+	@RequestMapping(value ="/modelcar/{id}", method=RequestMethod.DELETE)
 	public void deleteScalecar(@PathVariable Long id) { 
 		scaleService.deleteScalecar(id);
 	}
